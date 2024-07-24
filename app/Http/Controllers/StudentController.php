@@ -49,4 +49,41 @@ class StudentController extends Controller
         
         $student->delete();
     }
+
+
+    //mass assignments.
+    public function mass(){
+        $student = Student::find(3);
+        $student->update([
+            'age' => '24'
+        ]);
+    }
+
+
+    //firstOrCreate(first check if it exists in the database, if it does, nothing happens. if it doesnt, it creates).
+    public function index(){
+
+        //No operation will be performed because these details already exists in the database.
+        // Student::firstOrCreate([
+        //     'name' => 'Robin',
+        //     'email' => 'robin@gmail.com',
+        //     'age' => '24',
+        //     'country' => 'USA'
+        // ]);
+
+        //These details will be created in the database because these information do not exists there.
+        // Student::firstOrCreate([
+        //     'name' => 'John Doe',
+        //     'email' => 'johndoe@gmail.com',
+        //     'age' => '24',
+        //     'country' => 'USA'
+        // ]);
+
+        //firstOrNew(check if it exists, if it does, then change the old values to the new values but if it doesnt, create the new values).
+        $std = Student::firstOrNew(['name' => 'Tobi']);
+        $std->email = "tobi@gmail.com";
+        $std->age = "32";
+        $std->country = "Nigeria";
+        $std->save();
+    }
 }
