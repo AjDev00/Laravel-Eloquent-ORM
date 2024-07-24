@@ -32,4 +32,21 @@ class StudentController extends Controller
             echo "Country: " . $student->country . "<br><br><br>";
         }
     }
+
+
+    //update data.
+    public function update(){
+        $student = Student::find(4); //getting a single data based on the id using the find method.
+        $student->age = "30";
+
+        $student->update();
+    }
+
+    
+    //delete data.
+    public function delete(){
+        $student = Student::find(6);
+        
+        $student->delete();
+    }
 }
