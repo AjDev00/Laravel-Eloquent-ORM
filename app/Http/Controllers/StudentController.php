@@ -86,4 +86,12 @@ class StudentController extends Controller
         $std->country = "Nigeria";
         $std->save();
     }
+
+    //findOrFail is simple. it either displays the data if it exists or display a 404 error page if it does not.
+    public function findOrFail(){
+        
+        //This will return a 404 error page cause the id 100 does not exist in the DB.
+        $student = Student::findOrFail(100);
+        dd($student);
+    }
 }

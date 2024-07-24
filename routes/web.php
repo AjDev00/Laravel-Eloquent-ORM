@@ -14,3 +14,4 @@ Route::get('student/delete', [StudentController::class, 'delete']);
 Route::get('student/create', [StudentController::class, 'create']);
 Route::get('student/mass', [StudentController::class, 'mass']);
 Route::get('student/index', [StudentController::class, 'index']);
+Route::get('student/find-or-fail', [StudentController::class, 'findOrFail']);
