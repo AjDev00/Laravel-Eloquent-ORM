@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = [];
+
+    //One to One Relationship.
+    public function profile(){
+
+        return $this->hasOne(StudentProfile::class);
+    }
 }

@@ -89,9 +89,18 @@ class StudentController extends Controller
 
     //findOrFail is simple. it either displays the data if it exists or display a 404 error page if it does not.
     public function findOrFail(){
-        
+
         //This will return a 404 error page cause the id 100 does not exist in the DB.
         $student = Student::findOrFail(100);
         dd($student);
+    }
+
+    //one to one relationship. joining two tables together and accessing what is in the other joined table.
+    public function oneToOne(){
+        $single_student = Student::with('profile')->find(3);
+
+        echo $single_student->name ."<br>";
+        echo $single_student->email ."<br>";
+        echo $single_student->profile->country;
     }
 }
