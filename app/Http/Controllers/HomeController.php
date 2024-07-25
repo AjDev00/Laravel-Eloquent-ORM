@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     public function index(){
 
         $employee_details = Department::with('employee')->find(2);
@@ -18,4 +19,5 @@ class HomeController extends Controller
             echo $item-> name . "'s Phone Number: " . $item->phone . "<br><br><br>";
         }
     }
+
 }

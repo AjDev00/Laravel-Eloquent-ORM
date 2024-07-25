@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SampleController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::get('student/find-or-fail', [StudentController::class, 'findOrFail']);
 //STUDENT RELATIONSHIP ROUTES.
 Route::get('student/one-to-one', [StudentController::class, 'oneToOne']); //one to one.
 Route::get('student/home', [HomeController::class, 'index']); //one to many relationship.
+Route::get('student/many-to-many', [SampleController::class, 'index']); //many to many relationship.
