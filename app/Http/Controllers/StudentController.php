@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class StudentController extends Controller
 {
@@ -22,7 +23,12 @@ class StudentController extends Controller
     public function show(){
         // $students = Student::get(); //get all students.
         // $students = Student::where('country', 'Finland')->get(); //get only students from Finland.
-        $students = Student::where('country', 'Finland')->orderBy('name', 'asc')->get(); //get only students from Finland and display them in ascending order by name.
+        // $students = Student::where('country', 'Finland')->orderBy('name', 'asc')->get(); //get only students from Finland and display them in ascending order by name.
+
+        //using cache to store data for faster loading time.
+        $students = Cache::remember('school_students', 30, function(){
+            return Student::get();
+        });
 
         foreach($students as $student){
             echo "ID: " . $student->id . "<br>";

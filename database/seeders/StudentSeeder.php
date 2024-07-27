@@ -15,12 +15,14 @@ class StudentSeeder extends Seeder
     public function run(): void
     {
 
-        $faker = Faker::create();
-        $student = new Student();
-        $student->name = $faker->name;
-        $student->email = $faker->email;
-        $student->age = $faker->age;
-        $student->country = $faker->country;
-        $student->save();
+        for ($i = 0; $i < 3; $i++) {
+            $faker = Faker::create();
+            $student = new Student();
+            $student->name = $faker->name;
+            $student->email = $faker->email;
+            $student->age = $faker->randomDigit();
+            $student->country = $faker->country;
+            $student->save();
+        }
     }
 }
